@@ -31,10 +31,10 @@ to smaller functions.
 
 ## Installation
 
-To install the `gocyclo` command, run
+To install the `cyclo` command, run
 
 ```
-$ go install github.com/duanio/cyclo/cmd@latest
+$ go install github.com/duanio/cyclo/cmd/cyclo@latest
 ```
 
 and put the resulting binary in one of your PATH directories if
@@ -45,7 +45,7 @@ and put the resulting binary in one of your PATH directories if
 ```
 Calculate cyclomatic complexities of Go functions.
 Usage:
-    gocyclo [flags] <Go file or directory> ...
+    cyclo [flags] <Go file or directory> ...
 
 Flags:
     -over N               show functions with complexity > N only and
@@ -62,13 +62,13 @@ The output fields for each line are:
 ## Examples
 
 ```
-$ gocyclo .
-$ gocyclo main.go
-$ gocyclo -top 10 src/
-$ gocyclo -over 25 docker
-$ gocyclo -avg .
-$ gocyclo -top 20 -ignore "_test|Godeps|vendor/" .
-$ gocyclo -over 3 -avg gocyclo/
+$ cyclo .
+$ cyclo main.go
+$ cyclo -top 10 src/
+$ cyclo -over 25 docker
+$ cyclo -avg .
+$ cyclo -top 20 -ignore "_test|Godeps|vendor/" .
+$ cyclo -over 3 -avg gocyclo/
 ```
 
 Example output:
