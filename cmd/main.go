@@ -30,7 +30,7 @@ import (
 	"os"
 	"regexp"
 
-	"github.com/fzipp/gocyclo"
+	gocyclo "github.com/duanio/cyclo/cyclomatic"
 )
 
 const usageDoc = `Calculate cyclomatic complexities of Go functions.
