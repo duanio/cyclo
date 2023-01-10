@@ -17,6 +17,8 @@ source code.
 The cyclomatic complexity of a function is calculated according to the
 following rules:
 
+Forked from https://github.com/fzipp/gocyclo
+
 ```
  1 is the base complexity of a function
 +1 for each 'if', 'for', 'case', '&&' or '||'
@@ -32,7 +34,7 @@ to smaller functions.
 To install the `gocyclo` command, run
 
 ```
-$ go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
+$ go install github.com/duanio/cyclo/cmd@latest
 ```
 
 and put the resulting binary in one of your PATH directories if
