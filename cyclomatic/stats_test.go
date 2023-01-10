@@ -1,30 +1,28 @@
-package gocyclo_test
+package cyclomatic
 
 import (
 	"reflect"
 	"testing"
-
-	"github.com/fzipp/gocyclo"
 )
 
 func TestAverageComplexity(t *testing.T) {
 	tests := []struct {
-		stats gocyclo.Stats
+		stats Stats
 		want  float64
 	}{
-		{gocyclo.Stats{
+		{Stats{
 			{Complexity: 2},
 		}, 2},
-		{gocyclo.Stats{
+		{Stats{
 			{Complexity: 2},
 			{Complexity: 3},
 		}, 2.5},
-		{gocyclo.Stats{
+		{Stats{
 			{Complexity: 2},
 			{Complexity: 3},
 			{Complexity: 4},
 		}, 3},
-		{gocyclo.Stats{
+		{Stats{
 			{Complexity: 2},
 			{Complexity: 3},
 			{Complexity: 3},
@@ -41,22 +39,22 @@ func TestAverageComplexity(t *testing.T) {
 
 func TestTotalComplexity(t *testing.T) {
 	tests := []struct {
-		stats gocyclo.Stats
+		stats Stats
 		want  uint64
 	}{
-		{gocyclo.Stats{
+		{Stats{
 			{Complexity: 2},
 		}, 2},
-		{gocyclo.Stats{
+		{Stats{
 			{Complexity: 2},
 			{Complexity: 3},
 		}, 5},
-		{gocyclo.Stats{
+		{Stats{
 			{Complexity: 2},
 			{Complexity: 3},
 			{Complexity: 4},
 		}, 9},
-		{gocyclo.Stats{
+		{Stats{
 			{Complexity: 2},
 			{Complexity: 3},
 			{Complexity: 3},
@@ -73,20 +71,20 @@ func TestTotalComplexity(t *testing.T) {
 
 func TestSortAndFilter(t *testing.T) {
 	tests := []struct {
-		stats gocyclo.Stats
+		stats Stats
 		top   int
 		over  int
-		want  gocyclo.Stats
+		want  Stats
 	}{
 		{
-			stats: gocyclo.Stats{
+			stats: Stats{
 				{Complexity: 1},
 				{Complexity: 4},
 				{Complexity: 2},
 				{Complexity: 3},
 			},
 			top: -1, over: 0,
-			want: gocyclo.Stats{
+			want: Stats{
 				{Complexity: 4},
 				{Complexity: 3},
 				{Complexity: 2},
@@ -94,20 +92,20 @@ func TestSortAndFilter(t *testing.T) {
 			},
 		},
 		{
-			stats: gocyclo.Stats{
+			stats: Stats{
 				{Complexity: 1},
 				{Complexity: 2},
 				{Complexity: 3},
 				{Complexity: 4},
 			},
 			top: 2, over: 0,
-			want: gocyclo.Stats{
+			want: Stats{
 				{Complexity: 4},
 				{Complexity: 3},
 			},
 		},
 		{
-			stats: gocyclo.Stats{
+			stats: Stats{
 				{Complexity: 1},
 				{Complexity: 2},
 				{Complexity: 4},
@@ -115,14 +113,14 @@ func TestSortAndFilter(t *testing.T) {
 				{Complexity: 5},
 			},
 			top: -1, over: 3,
-			want: gocyclo.Stats{
+			want: Stats{
 				{Complexity: 5},
 				{Complexity: 4},
 				{Complexity: 4},
 			},
 		},
 		{
-			stats: gocyclo.Stats{
+			stats: Stats{
 				{Complexity: 1},
 				{Complexity: 2},
 				{Complexity: 3},
@@ -130,7 +128,7 @@ func TestSortAndFilter(t *testing.T) {
 				{Complexity: 5},
 			},
 			top: 2, over: 2,
-			want: gocyclo.Stats{
+			want: Stats{
 				{Complexity: 5},
 				{Complexity: 4},
 			},

@@ -2,10 +2,10 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-//go:build go1.18
-// +build go1.18
+//go:build !go1.18
+// +build !go1.18
 
-package gocyclo
+package cyclomatic
 
 import "go/ast"
 
@@ -18,8 +18,6 @@ func recvString(recv ast.Expr) string {
 	case *ast.StarExpr:
 		return "*" + recvString(t.X)
 	case *ast.IndexExpr:
-		return recvString(t.X)
-	case *ast.IndexListExpr:
 		return recvString(t.X)
 	}
 	return "BADRECV"

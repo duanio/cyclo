@@ -2,9 +2,9 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// Package gocyclo calculates the cyclomatic complexities of functions and
+// Package cyclomatic calculates the cyclomatic complexities of functions and
 // methods in Go source code.
-package gocyclo
+package cyclomatic
 
 import (
 	"go/ast"

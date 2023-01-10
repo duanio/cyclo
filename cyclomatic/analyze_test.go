@@ -1,11 +1,9 @@
-package gocyclo_test
+package cyclomatic
 
 import (
 	"reflect"
 	"strings"
 	"testing"
-
-	"github.com/fzipp/gocyclo"
 )
 
 func TestAnalyze(t *testing.T) {
@@ -82,7 +80,7 @@ func TestAnalyze(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		stats := gocyclo.Analyze(tt.paths, nil).
+		stats := Analyze(tt.paths, nil).
 			SortAndFilter(-1, 0)
 		statLines := make([]string, len(stats))
 		for i, s := range stats {
